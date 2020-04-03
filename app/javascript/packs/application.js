@@ -8,13 +8,17 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+console.log("hello fom webpack")
+
 import { Application } from "stimulus"
-import { autoload } from "stimulus/webpack-helpers"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
 
 const application = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 
-autoload(context, application)
+application.load(definitionsFromContext(context))
+
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
